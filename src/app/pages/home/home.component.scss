@@ -1,0 +1,26 @@
+#chart-section{   
+    background: #d3d3d361 !important;
+}
+.charts-container {
+    background: white;
+    padding: 20px;
+}
+.chart1, .chart2{
+    display: block;
+    padding:15px;
+    background: white;
+}
+section{     
+    margin: 0% auto !important;
+    background-color: transparent !important;
+}
+
+@media screen and (max-width: 700px) {
+    .chart1, .chart2{
+        height: 200px;
+        width: 330px;
+        margin-top:10px;
+    }
+}
+
+

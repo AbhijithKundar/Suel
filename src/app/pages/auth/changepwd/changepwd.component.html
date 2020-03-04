@@ -1,0 +1,48 @@
+<div class="login-pannel">
+    <a class="header-logo"></a>
+    <div class="panel">
+        <div class="loginpanel">
+            <h4>Change Password</h4>
+            <div class="form-container">
+                <!-- <p>Enter your email address below and we'll send you a link to reset your password.</p> -->
+                <form [formGroup]="changepwdForm">
+                        <mat-form-field>
+                                <input matInput placeholder="New password" [type]="passwordHide ? 'password' : 'text'"
+                                    [formControl]="changepwdForm.controls['password']"
+                                    [(ngModel)]="changepwdData.password">
+                                <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordHide">
+                                    <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="f.password.invalid">{{getErrorMessage('password')}}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Confirm password"
+                                    [type]="cpasswordHide ? 'password' : 'text'"
+                                    [formControl]="changepwdForm.controls['confirmPassword']"
+                                    [(ngModel)]="changepwdData.confirmPassword">
+                                <button mat-icon-button matSuffix (click)="cpasswordHide = !cpasswordHide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="cpasswordHide">
+                                    <mat-icon>{{cpasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="f.confirmPassword.invalid">{{getErrorMessage('confirmPassword')}}
+                                </mat-error>
+                            </mat-form-field>
+                    <div class="btn-container">
+                        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"
+                            class="create-btn">Change password</button>
+                    </div>
+                    <p class="privacy">
+                        <a [routerLink]="'/pages/auth/login'">LogIn?</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="header-signup">
+                Still can't change password? E-mail  
+                <a href="mailto:account-logout@codeinit.com?subject=Login issue">account-lockout@codeinit.com</a>
+                <br>
+                if you need additional assistance.
+        </div>
+    </div>
+</div>

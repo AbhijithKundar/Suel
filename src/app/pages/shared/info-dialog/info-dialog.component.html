@@ -1,0 +1,19 @@
+﻿<div class="dialog-header">
+  <h3 matDialogTitle>{{data.title}}</h3>
+  <button class="close-button" mat-icon-button tabindex="-1" (click)="clickOk()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="settings-content">
+  <!-- <h5></h5> -->
+  <div class="conf-lable">
+    <p>{{data.lblData}}</p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button matDialogClose (click)="clickOk()">
+    Okay
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,36 @@
+<div class="login-pannel">
+    <a class="header-logo"></a>
+    <div class="panel">
+        <div class="loginpanel">
+            <h4>Log in to your account</h4>
+            <div class="form-container">
+                <form [formGroup]="loginForm">
+                    <mat-form-field>
+                        <input matInput placeholder="Email address" [formControl]="loginForm.controls['email']"
+                            [(ngModel)]="loginData.email" required>
+                        <mat-error *ngIf="f.email.invalid">{{getErrorMessage('email')}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Password" [type]="passwordHide ? 'password' : 'text'"
+                            [formControl]="loginForm.controls['password']" [(ngModel)]="loginData.password">
+                        <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordHide">
+                            <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="f.password.invalid">{{getErrorMessage('password')}}</mat-error>
+                    </mat-form-field>
+                    <div class="btn-container">
+                        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"
+                            class="create-btn">Log In</button>
+                    </div>
+                    <p class="privacy">
+                        <a [routerLink]="'/pages/auth/forgot'">Forgot your password?</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="header-signup">
+                <span class="login-span">New to CodeInit?&nbsp;</span>
+            </div>
+    </div>
+</div>

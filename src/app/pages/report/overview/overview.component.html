@@ -1,0 +1,17 @@
+<section id="service-section">
+    <div class="login-container">
+        <div class="about-title">
+            <h2>Reports</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="services col-sm-6 col-xs-3 col-md-3 col-lg-2" *ngFor="let services of servicesData">
+                    <button class="services-container" [routerLink]="'/pages/master/'+ services.routerLink">
+                        <mat-icon>{{services.icon}}</mat-icon>
+                        <p>{{services.lbl}}</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,63 @@
+.login-pannel{
+    position: relative;
+    height: 100%;
+    text-align: center;
+    padding-top: 90px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.header-logo {
+    display: inline-block;
+    height: 84px;
+    width: 235px;
+    overflow: hidden;
+    background: url(/assets/logo.png);
+    background-repeat: repeat;
+}
+
+.panel{
+    max-width: 430px;
+    margin: 30px auto 20px;
+    border-radius: 8px;
+}
+.loginpanel{
+    background: white;
+    border-radius: 5px;
+    padding:2rem;
+}
+.form-container{
+    text-align: left;
+    margin-top: 20px;
+}
+mat-form-field{
+    width:100%;
+    margin: 5px 0px;
+}
+.btn-container{
+    margin-top:30px;
+}
+.privacy{
+    font-size: 13px;
+    margin: 13px 0px;
+    text-align: center;
+}
+.create-btn{
+    width:100%;
+}
+h4{
+    margin:auto;
+    color:#3f51b5
+}
+.login-btn{
+    background: rgba(0,0,0,0.2);
+    // padding: 11px 16px;
+    max-width: none;
+}
+.login-btn:hover{
+    background: rgba(0, 0, 0, 0.41);
+}
+.header-signup{
+    margin-top: 20px;
+    color: white;
+}

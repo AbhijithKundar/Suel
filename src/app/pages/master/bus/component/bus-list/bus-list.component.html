@@ -1,0 +1,30 @@
+<div class="tile-container">
+    <h4>List of vehicles </h4>
+    <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="16px">
+        <div class="tile add-title" (click)="addItem()">
+            <div class="icon-div">
+                <mat-icon style="margin-right: 16px;">add</mat-icon>
+            </div>
+            <div class="details-div">
+                <p class="name">Add new vehicle</p>
+            </div>
+        </div>
+        <div class="tile" *ngFor="let bus of listBus; let idx = index">
+            <div class="icon-div">
+                <mat-icon style="margin-right: 16px;">directions_bus</mat-icon>
+            </div>
+            <div class="details-div">
+                <p class="name">{{bus.name}}</p>
+                <p>{{bus.type}}</p>
+                <div class="btn-div">
+                    <button class="more" (click)="editItem(idx)">more</button>
+                    <div class="btn-delete">
+                        <button mat-icon-button color="dark" aria-label="Filter data with a filter icon" (click)="deleteItem(idx)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

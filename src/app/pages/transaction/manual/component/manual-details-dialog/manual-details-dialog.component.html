@@ -1,0 +1,89 @@
+﻿<div class="dialog-header">
+  <h3 matDialogTitle>{{title}}</h3>
+  <button class="close-button" mat-icon-button tabindex="-1" matDialogClose>
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="dialogue-content">
+  <form [formGroup]="registerForm">
+    <div class="details-container">
+      <div class="formdiv">
+        <div class="form-field">
+          <label class="label-top">Vehicle number : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input type="text" placeholder="vehicle number" floatLabel="never" aria-label="Number" matInput [formControl]="registerForm.controls['vehicle']"  [(ngModel)]="UserData.vehicle"
+              [matAutocomplete]="autoveh" required>
+            <mat-autocomplete #autoveh="matAutocomplete">
+              <mat-option *ngFor="let ve_option of vehicle_no" [value]="ve_option">
+                {{ve_option}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="f.vehicle.invalid">{{getErrorMessage('vehicle')}}</mat-error>
+          </mat-form-field>
+        </div>
+       
+        <div class="form-field">
+          <label class="label-top">Driver number : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input type="text" placeholder="driver number" floatLabel="never" aria-label="Number" matInput [formControl]="registerForm.controls['driver']"  [(ngModel)]="UserData.driver"
+              [matAutocomplete]="auto" required>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of driver_no" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="f.driver.invalid">{{getErrorMessage('driver')}}</mat-error>
+          </mat-form-field>
+        </div>
+       
+        <div class="form-field">
+          <label class="label-top">Vehicle type : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <mat-select matInput class="fontSetter" floatLabel="never"
+              [formControl]="registerForm.controls['type']" [(ngModel)]="UserData.type" required>
+              <mat-option [value]="'Trailler'">Trailler</mat-option>
+              <mat-option [value]="'Fork lift'">Fork lift</mat-option>
+              <mat-option [value]="'10 Ton pickup'">10 Ton pickup</mat-option>
+              <mat-option [value]="'3 ton hiab'">3 ton hiab</mat-option>
+              <mat-option [value]="'3 ton p/c mur'">3 ton p/c mur</mat-option>
+              <mat-option [value]="'sand trailer'">sand trailer</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.type.invalid">{{getErrorMessage('type')}}</mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <div class="formdiv left-brdr">
+        <div class="form-field">
+          <label class="label-top">Litre : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['litre']"
+              [(ngModel)]="UserData.litre" required>
+            <mat-error *ngIf="f.litre.invalid">{{getErrorMessage('litre')}}</mat-error>
+          </mat-form-field>
+        </div>
+      
+        <div class="form-field">
+          <label class="label-top">Timing : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" type="time" [formControl]="registerForm.controls['time']"
+              [(ngModel)]="UserData.time" required>
+            <mat-error *ngIf="f.time.invalid">{{getErrorMessage('time')}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div class="btn-div">
+    <button mat-button class="btn-accent" (click)="clickOk()">
+      Save
+    </button>
+    <button mat-button matDialogClose class="btn-prime">
+      Cancel
+    </button>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,19 @@
+<div class="page-title-container">
+    <div class="bread">
+        <p>
+            <span *ngFor="let bc of getBreadCrumbs(); let i = index">
+                <span>
+                    <button [disabled]="breadcrumbs.length-1 === i " [ngClass]="{'active': breadcrumbs.length-1 === i}"  (click)="routeTo(bc)">
+                        {{bc}}    
+                    </button>
+                </span> 
+                <span *ngIf="breadcrumbs.length-1 !== i ">
+                    <button mat-icon-button>
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </button>
+                </span> 
+            </span>
+        </p>
+    </div>
+</div>
+   

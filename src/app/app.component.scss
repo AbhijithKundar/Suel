@@ -1,0 +1,33 @@
+  .btn-accent{
+    background: #e5408e !important;
+    border-radius: 0px !important;
+    border: 2px solid #e5408e !important;
+    color: white !important;
+    font-size: 1.2rem !important;
+    padding: 7px 25px !important;
+    flex: 1;
+  }
+  .btn-prime{
+    background: white !important;
+    border-radius: 0px !important;
+    border: 2px solid #3f51b5 !important;
+    color: #3f51b5 !important;
+    font-size: 1.2rem !important;
+    padding: 7px 25px !important;
+    flex: 1
+  }
+
+  .loading-shade {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.12);
+    mat-spinner{
+      width: 100px;
+      height: 100px;
+      margin: 25% auto;
+      z-index: 1;
+    }
+  }

@@ -1,0 +1,33 @@
+<div class="login-pannel">
+    <a class="header-logo"></a>
+    <div class="panel">
+        <div class="loginpanel">
+            <h4>Reset Password</h4>
+            <div class="form-container">
+                <p>Enter your email address below and we'll send you a link to reset your password.</p>
+                <form [formGroup]="loginForm">
+                    <mat-form-field>
+                        <input matInput placeholder="Email address" [formControl]="loginForm.controls['email']"
+                            [(ngModel)]="loginData.email" required>
+                        <mat-error *ngIf="f.email.invalid">{{getErrorMessage('email')}}</mat-error>
+                    </mat-form-field>
+                    <div class="btn-container">
+                        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"
+                            class="create-btn">Reset password</button>
+                    </div>
+                    <p class="privacy">
+                        <a [routerLink]="'/pages/auth/login'">LogIn?</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="header-signup">
+                Still can't login? E-mail  
+                <a href="mailto:account-logout@codeinit.com?subject=Login issue">account-lockout@codeinit.com</a>
+                <br>
+                if you need additional assistance.
+                <!-- <span class="login-span">New to CodeInit?&nbsp;</span>
+                <button mat-button class="login-btn" [routerLink]="'/signup'">Signup</button> -->
+        </div>
+    </div>
+</div>

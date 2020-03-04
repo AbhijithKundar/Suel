@@ -1,0 +1,74 @@
+<div id="chart-section">
+    <section>
+        <div class="login-container">
+            <div fxLayout="row" fxLayout.xs="column"  fxLayout.sm="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center">
+                <div fxFlex="50%" class="charts-container">
+                        <div class="filter-bar">
+                            <h6>{{chartTitle.title1}}</h6>
+                        </div>
+                       <canvas baseChart
+                        [data]="doughnutChartData"
+                        [labels]="doughnutChartLabels"
+                        [colors]="doughnutColors"
+                        [chartType]="doughnutChartType"
+                       ></canvas>
+                </div>
+                <div fxFlex="50%" class="charts-container">
+                        <div class="filter-bar">
+                            <h6>{{chartTitle.title2}}</h6>
+                        </div>
+                        <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="pieChartOptions"
+                        [colors]="barChartColors"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType"
+                        ></canvas>
+                </div>
+            </div>
+        </div>
+    </section> 
+</div>
+
+<section id="service-section">
+    <div class="login-container">
+        <div class="about-title">
+            <h2>Services</h2>
+        </div>
+        <div class="container">
+            <a>Reports</a>
+            <div class="row">
+                <div class="services col-sm-6 col-xs-3 col-md-3 col-lg-2" *ngFor="let services of servicesData.report">
+                    <button class="services-container" [routerLink]="'/pages/report/'+ services.routerLink">
+                        <mat-icon>{{services.icon}}</mat-icon>
+                        <p>{{services.lbl}}</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <a>Transactions</a>
+            <div class="row">
+                <div class="services col-sm-6 col-xs-3 col-md-3 col-lg-2" *ngFor="let services of servicesData.transaction">
+                    <button class="services-container" [routerLink]="'/pages/transaction/'+ services.routerLink">
+                        <mat-icon>{{services.icon}}</mat-icon>
+                        <p>{{services.lbl}}</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <a>Masters</a>
+            <div class="row">
+                <div class="services col-sm-6 col-xs-3 col-md-3 col-lg-2" *ngFor="let services of servicesData.master">
+                    <button class="services-container" [routerLink]="'/pages/master/'+ services.routerLink">
+                        <mat-icon>{{services.icon}}</mat-icon>
+                        <p>{{services.lbl}}</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

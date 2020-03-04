@@ -1,0 +1,119 @@
+
+mat-sidenav-container {
+  position: absolute;
+  top: 60px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+mat-sidenav-content {
+  overflow: unset !important;
+}
+.page-outlet {
+  height: 100%;
+  overflow: auto !important;
+}
+
+mat-sidenav {
+  width: 310px;
+}
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height:60px;
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+
+
+.selectedNav {
+  mat-panel-title {
+    color: #3f51b5 !important;
+  }
+}
+.selectedSubMenu {
+  color: #3f51b5 !important;
+  background: #3f51b51f !important;
+}
+
+.page-content{
+  height: 86.8vh;
+}
+
+.subheader-logo{
+  width: 150px;
+  height: 42px;
+  display: block;
+  position: absolute;
+  left: 89px;
+  bottom: 0.1px;
+  background-image: url(/assets/logo.png);
+  background-size: 150px 42px;
+}
+
+
+
+// ********* Mat panel design ********
+.mat-menu-panel{
+  overflow: unset !important;
+  border-radius: 0px !important;
+}
+
+.mat-list-item {
+  width: 100%;
+  border: 0px;
+  text-align: left;
+  color: gray;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 1px 0px 0px 5px;
+  mat-icon {
+    padding: 0px 12px !important;
+  }
+}
+mat-panel-title {
+  color: gray;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 0px 0px !important;
+  color: gray !important;
+  font-weight: 500 !important;
+}
+.mat-expansion-panel-header {
+  padding: 0px 17px !important;
+}
+mat-expansion-panel-body {
+  padding: 0 24px 0px !important;
+}
+// ********* End ********
+
+
+@media only screen and (max-width: 600px) {
+  sbm-breadcrumb {
+      display: none !important;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .page-outlet {
+      height: 100%;
+  }
+}
+
+

@@ -1,0 +1,79 @@
+﻿<div class="dialog-header">
+  <h3 matDialogTitle>Filter your data</h3>
+  <button class="close-button" mat-icon-button tabindex="-1" (click)="clickOk()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="dialogue-content">
+  <div class="filter-container">
+    <div class="formdiv">
+      <button *ngFor="let filter of fitlerJson; let idx=index;"
+        [ngClass]="{'selected': filter.selectedData.length > 0, 'actionBtn':filter.clm === selectedJson.data.clm }"
+        [matBadge]="filter.selectedData.length" matBadgePosition="after" matBadgeColor="accent"
+        (click)="selectFilter(idx, filter)">
+        {{filter.name}}
+      </button>
+    </div>
+    <div class="formdiv left-brdr">
+      <div class="filter-area" *ngIf="selectedJson.data.name && selectedJson.isParentUpdate">
+        <h3>{{selectedJson.data?.name}}</h3>
+        <div class="form-field">
+          <mat-form-field floatLabel="never" *ngIf="selectedJson?.data?.type === 'text'">
+            <input matInput class="fontSetter" type="text" [(ngModel)]="inputFields.textInput">
+          </mat-form-field>
+          <mat-form-field floatLabel="never" *ngIf="selectedJson?.data?.type === 'number'">
+            <input matInput class="fontSetter" type="number" [(ngModel)]="inputFields.numberInput">
+          </mat-form-field>
+          <mat-form-field floatLabel="never" *ngIf="selectedJson?.data?.type === 'date'">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="inputFields.dateInput" placeholder="Choose date" (keydown)="false" (click)="picker.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <form>
+            <mat-form-field floatLabel="never" *ngIf="selectedJson?.data?.type === 'autocomplete'">
+              <input type="text"
+              placeholder="search"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto" [(ngModel)]="inputFields.autocompleteInput">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="form-field add-field" *ngIf="selectedJson?.data?.type !== 'select'">
+          <button mat-button class="btn-prime add-btn" (click)="addFilter()">
+            Add
+          </button>
+        </div>
+      </div>
+      <div class="filter-applied" *ngIf="selectedJson.data.name">
+        <div class="no-parent" *ngIf="!selectedJson.isParentUpdate">
+          <p>This filter have parent filter, So you have add some <b>{{getParentLbl(selectedJson.data.parent)}}</b> to select this filter</p>
+        </div>
+        <mat-chip-list>
+          <mat-chip removable="true" (removed)="removeSelectData(i)"
+            *ngFor="let select of selectedJson?.data?.selectedData; let i = index" color="light">
+            {{select.val}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div class="btn-div">
+    <button mat-button matDialogClose class="btn-accent" (click)="clickOk()">
+      Apply
+    </button>
+    <button mat-button matDialogClose class="btn-prime" (click)="clickOk()">
+      Cancel
+    </button>
+  </div>
+</mat-dialog-actions>

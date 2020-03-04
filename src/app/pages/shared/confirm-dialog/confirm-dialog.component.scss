@@ -1,0 +1,13 @@
+.dialog-header{
+  display: flex;
+  h3 {
+    width:95%;
+  }
+}
+mat-dialog-content {
+  margin: 50px 0px;
+}
+
+mat-dialog-actions {
+  margin:5px 0px;
+}

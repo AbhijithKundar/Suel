@@ -1,0 +1,109 @@
+<div class="list-container">
+    <div class="page-container mat-elevation-z8">
+        <h4>List Of Students </h4>
+
+        <div class='commandbar-container'>
+            <div class="row">
+                <div class="col-sm-8 col-xs-8 col-md-6 col-lg-6" >
+                    <p>
+                        0 / 100 
+                        <span class="filter-icon">
+                            <button mat-icon-button color="dark" aria-label="Filter data with a filter icon" (click)="openFilter()">
+                                <mat-icon>tune</mat-icon>
+                                </button>
+                        </span>
+                    </p> 
+                </div>
+                <div class="col-sm-4 col-xs-4 col-md-6 col-lg-6 d-flex" >
+                    <p class="ml-auto">
+                        <span class="download-icon">
+                            <button mat-icon-button color="dark" aria-label="Filter data with a filter icon">
+                                <mat-icon>cloud_download</mat-icon>
+                                </button>
+                        </span> 
+                        <span>
+                            <button class="add-icon" mat-icon-button color="dark" aria-label="Filter data with a filter icon" (click)="addStudent()">
+                                <mat-icon>add</mat-icon>
+                                </button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class='filter-container'>
+            <mat-chip-list aria-label="Fish selection">
+                <mat-chip removable = "true" (removed)="removeFilter(i)"  *ngFor="let filter of filters; let i = index" color="light">
+                    {{filter.name}}
+                    <mat-icon>chevron_right</mat-icon>
+                    {{filter.val}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+        </div>
+        
+        <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort matSortActive="created"
+                matSortDisableClear matSortDirection="desc">
+                <ng-container matColumnDef="loan_id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                        Loan ID
+                    </th>
+                    <td mat-cell *matCellDef="let row">{{row.loan_id }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="loan_amount">
+                    <th mat-header-cell *matHeaderCellDef>Loan amount</th>
+                    <td mat-cell *matCellDef="let row">{{row.loan_amount}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="loan_type">
+                    <th mat-header-cell *matHeaderCellDef>Loan Type</th>
+                    <td mat-cell *matCellDef="let row">{{row.loan_type}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="emi">
+                    <th mat-header-cell *matHeaderCellDef>EMI</th>
+                    <td mat-cell *matCellDef="let row">{{row.emi}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="emi_type">
+                    <th mat-header-cell *matHeaderCellDef>EMI Type</th>
+                    <td mat-cell *matCellDef="let row">{{row.emi_type}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="total_dues">
+                    <th mat-header-cell *matHeaderCellDef>Total Dues</th>
+                    <td mat-cell *matCellDef="let row">{{row.total_dues}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="pending_dues">
+                    <th mat-header-cell *matHeaderCellDef>Pending Dues</th>
+                    <td mat-cell *matCellDef="let row">{{row.pending_dues}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let row">{{row.status}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="action" stickyEnd style="background: #fff !important;">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let row">
+                        <span><button class="action-btn" (click)="editStudent()">
+                                <mat-icon>edit</mat-icon>
+                            </button></span>
+                        <span><button class="action-btn" (click)="openDeleteDialogue()">
+                                <mat-icon>delete</mat-icon>
+                            </button></span>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+
+        <mat-paginator [length]="dataSource.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

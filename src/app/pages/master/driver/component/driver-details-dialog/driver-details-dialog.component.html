@@ -1,0 +1,76 @@
+﻿<div class="dialog-header">
+  <h3 matDialogTitle>{{title}}</h3>
+  <button class="close-button" mat-icon-button tabindex="-1" matDialogClose>
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="dialogue-content">
+  <form [formGroup]="registerForm">
+    <div class="details-container">
+      <div class="formdiv">
+        <div class="form-field">
+          <label class="label-top">Driver number : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['number']"
+              [(ngModel)]="UserData.number" required>
+            <mat-error *ngIf="f.number.invalid">{{getErrorMessage('number')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label class="label-top">Driver name : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['name']"
+              [(ngModel)]="UserData.name" required>
+            <mat-error *ngIf="f.name.invalid">{{getErrorMessage('name')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label class="label-top">Age : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['age']"
+              [(ngModel)]="UserData.age" required>
+            <mat-error *ngIf="f.age.invalid">{{getErrorMessage('age')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label class="label-top">Mobile number : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['mobile']"
+              [(ngModel)]="UserData.mobile" required>
+            <mat-error *ngIf="f.mobile.invalid">{{getErrorMessage('mobile')}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="formdiv left-brdr">
+        <div class="form-field">
+          <label class="label-top">Driver licence number : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['licence']"
+              [(ngModel)]="UserData.licence" required>
+            <mat-error *ngIf="f.licence.invalid">{{getErrorMessage('licence')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <h4 matDialogTitle>Document</h4>
+        <div class="form-field">
+            <label class="label-top">Upload driver licence photo : </label>
+            <br>
+              <input type = "file" class="fontSetter" floatLabel="never">
+        </div>
+
+        </div>
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div class="btn-div">
+    <button mat-button class="btn-accent" (click)="clickOk()">
+      Save
+    </button>
+    <button mat-button matDialogClose class="btn-prime">
+      Cancel
+    </button>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,126 @@
+﻿<div class="dialog-header">
+  <h3 matDialogTitle>{{data.title}}</h3>
+  <button class="close-button" mat-icon-button tabindex="-1" (click)="clickOk()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="dialogue-content">
+  <form [formGroup]="registerForm">
+    <div class="details-container">
+      <div class="formdiv">
+        <div class="form-field">
+          <label class="label-top">Enter the name : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['name']"
+              [(ngModel)]="UserData.name" required>
+            <mat-error *ngIf="f.name.invalid">{{getErrorMessage('name')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label class="label-top">Enter the email :</label>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="" class="fontSetter" floatLabel="never"
+              [formControl]="registerForm.controls['email']" [(ngModel)]="UserData.useremail">
+            <mat-error *ngIf="f.email.invalid">{{getErrorMessage('email')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label class="label-top">Enter the phone number : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['phone']"
+              [(ngModel)]="UserData.phone" required>
+            <mat-error *ngIf="f.phone.invalid">{{getErrorMessage('phone')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label class="label-top">Select the govt. ID type : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <mat-select matInput class="fontSetter" floatLabel="never"
+              [formControl]="registerForm.controls['govtIDtype']" [(ngModel)]="UserData.govtIDtype" required>
+              <mat-option [value]="'Pan card'">Pan card</mat-option>
+              <mat-option [value]="'Aadhar card'">Aadhar card</mat-option>
+              <mat-option [value]="'Driving licence'">Driving licence</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.govtIDtype.invalid">{{getErrorMessage('govtIDtype')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label class="label-top">Enter the govt. ID : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['govtID']"
+              [(ngModel)]="UserData.govtID" required>
+            <mat-error *ngIf="f.govtID.invalid">{{getErrorMessage('govtID')}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="formdiv left-brdr">
+        <!-- <h4 matDialogTitle>Address</h4> -->
+        <div class="form-field">
+          <label class="label-top">Enter the Flat, House, Landmark : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['flat_house_landmark']"
+              [(ngModel)]="UserData.flat_house_landmark" required>
+            <mat-error *ngIf="f.flat_house_landmark.invalid">{{getErrorMessage('flat_house_landmark')}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- <div class="form-field">
+          <label class="label-top">Enter the Landmark : </label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['landmark']"
+              [(ngModel)]="UserData.landmark" required>
+            <mat-error *ngIf="f.landmark.invalid">{{getErrorMessage('landmark')}}</mat-error>
+          </mat-form-field>
+        </div> -->
+
+        <div class="form-field">
+          <label class="label-top">Enter the Pincode : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['pincode']"
+              [(ngModel)]="UserData.pincode" required>
+            <mat-error *ngIf="f.pincode.invalid">{{getErrorMessage('pincode')}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <label class="label-top">Enter the city, state : <span class="requredsymbol">*</span></label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['city_state']"
+              [(ngModel)]="UserData.city_state" required>
+            <mat-error *ngIf="f.city_state.invalid">{{getErrorMessage('city_state')}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- <div class="form-field">
+          <label class="label-top">Enter the state : </label>
+          <mat-form-field floatLabel="never">
+            <input matInput class="fontSetter" floatLabel="never" [formControl]="registerForm.controls['state']"
+              [(ngModel)]="UserData.state" required>
+            <mat-error *ngIf="f.state.invalid">{{getErrorMessage('state')}}</mat-error>
+          </mat-form-field>
+        </div> -->
+        <h4 matDialogTitle>Document</h4>
+        <div class="form-field">
+            <label class="label-top">Upload your profile photo : </label>
+            <br>
+              <input type = "file" class="fontSetter" floatLabel="never">
+          </div>
+
+
+      </div>
+     
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div class="btn-div">
+  <button mat-button matDialogClose class="btn-accent" (click)="clickOk()">
+    Save
+  </button>
+  <button mat-button matDialogClose class="btn-prime" (click)="clickOk()">
+    Cancel
+  </button>
+  </div>
+</mat-dialog-actions>
